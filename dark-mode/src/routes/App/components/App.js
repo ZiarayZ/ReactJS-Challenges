@@ -4,12 +4,16 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import '../styles/_app.scss';
 
 function App() {
-  const [theme, setTheme] = useState('light-mode');
-  const [icon, setIcon] = useState(faMoon);
+  const [theme, setTheme] = useState(false);
+  //toggle theme from false 'light-mode' to true 'dark-mode'
   const themeToggler = () => {
-    theme === 'light-mode' ? setTheme('dark-mode') : setTheme('light-mode');
-    icon === faMoon ? setIcon(faSun) : setIcon(faMoon);
-    //could probably combine these in some way
+    setTheme(!theme);
+    const html = document.querySelector('html');
+    if (theme) {
+      html.classList.add('dark-mode');
+    } else {
+      html.classList.remove('dark-mode');
+    }
   }
   return (
     <div className="app">
@@ -20,7 +24,12 @@ function App() {
 
         {/* --The button that should toggle dark mode-- */}
         <button className="app__dark-mode-btn icon level-right" onClick={themeToggler}>
-          <FontAwesomeIcon icon={icon} color="#FFA500" />
+          {
+            theme ? (<FontAwesomeIcon icon={faSun} color="#FFA500" />) : null
+          }
+          {
+            theme ? (<FontAwesomeIcon icon={faMoon} />) : null
+          }
         </button>
 
       </div>
