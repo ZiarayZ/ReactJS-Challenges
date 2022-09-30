@@ -13,6 +13,10 @@ export default class Discover extends Component {
     };
   }
 
+  updateState() {
+    
+  }
+
   render() {
     const { newReleases, playlists, categories } = this.state;
 
