@@ -20,8 +20,8 @@ function Messages() {
   const { setLatestMessage } = useContext(LatestMessagesContext);
 
   useEffect(() => {
-    
-  })
+
+  });
 
   return (
     <div className="messages">
