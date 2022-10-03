@@ -13,8 +13,18 @@ export default class Discover extends Component {
     };
   }
 
-  updateState() {
-    
+  //threads?
+  componentDidMount = async () => {
+    await this.getData('newReleases', getNewReleases);
+    await this.getData('playlists', getFeaturedPlaylists);
+    await this.getData('categories', getCategories);
+  }
+
+  //fetch data
+  getData = (key, fetchFunction) => {
+    return new Promise(async resolve => {
+      this.setState({ [key]: await fetchFunction() }, resolve);
+    })
   }
 
   render() {
